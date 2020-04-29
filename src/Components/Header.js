@@ -9,12 +9,18 @@ import {
 } from "react-bootstrap";
 import '../App.css';
 import logo from "./logo192.png";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+
+import Home from '../Pages/Home';
+import About from '../Pages/About';
+import Contacts from '../Pages/Contacts';
+import Blog from '../Pages/Blog';
 
 export default class Header extends Component {
   render() {
     return (
       <>
-        <Navbar className="color-navbar" fixed="top" collapseOnSelect expand="md" /*bg="dark" variant="dark"*/>
+        <Navbar className="color-navbar"  collapseOnSelect expand="md" /*bg="dark" variant="dark"*/>
           <Container>
             <Navbar.Brand href="/">
               <img
@@ -44,6 +50,15 @@ export default class Header extends Component {
             </Navbar.Collapse>
           </Container>
         </Navbar>
+        
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/about" component={About}/>
+            <Route exact path="/contacts" component={Contacts}/>
+            <Route exact path="/blog" component={Blog}/>
+          </Switch>
+        </Router>
       </>
     );
   }
